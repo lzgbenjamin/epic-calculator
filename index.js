@@ -25,6 +25,16 @@ class App extends React.Component {
                     sequence: undefined
                 });
 
+            } 
+            
+            else if(currentNumber === '-') {
+
+                this.setState({
+                    currentNumber: "0",
+                    calc: currentNumber + innerText,
+                    operation: undefined
+                })
+
             } else {
                 this.setState({
                     currentNumber: currentNumber + innerText
@@ -54,14 +64,6 @@ class App extends React.Component {
                  };
                  break;
             }
-            case '-': {
-                if(innerText === '-') {
-                    this.setState({
-                        currentNumber: '-'
-                    });
-                };
-                break;
-            }
 
             default: {
                 if(!operation) { 
@@ -70,7 +72,6 @@ class App extends React.Component {
                         this.setState({
                             operation: bruh,
                             calc: currentNumber,
-                            sequence: currentNumber + innerText,
                             currentNumber: '0'
                         });
                     } 
@@ -79,14 +80,13 @@ class App extends React.Component {
                         this.setState({
                             operation: pog,
                             calc: currentNumber,
-                            sequence: currentNumber + innerText,
                             currentNumber: '0'
                         });
                     } 
                     else if(innerText === '=') {
                         
                         this.setState({
-                            currentNumber: '0',
+                            currentNumber: currentNumber,
                             calc: undefined,
                             sequence:undefined
                         });
@@ -95,7 +95,6 @@ class App extends React.Component {
                         this.setState({
                             operation: innerText,
                             calc: currentNumber,
-                            sequence: currentNumber + innerText,
                             currentNumber: '0'
                         });
                     }
@@ -105,13 +104,15 @@ class App extends React.Component {
                         operation: undefined,
                         calc: evaluated,
                         currentNumber: evaluated,
-                        sequence: sequence + currentNumber + '='
                     });
                 } else {
                     const evaluated = eval(`${calc} ${operation} ${currentNumber}`);
+                    
                     if(innerText === '-') {
                         this.setState({
-                            currentNumber: '-'
+                                operation: innerText,
+                                calc: evaluated,
+                                currentNumber: '0',
                         })
 
                     } else {
@@ -121,8 +122,7 @@ class App extends React.Component {
                             this.setState({
                                 operation: bruh,
                                 calc: evaluated,
-                                currentNumber: '0',
-                                sequence: sequence + currentNumber + innerText
+                                currentNumber: '0'
                             });
                         } 
                         else if (innerText === '÷') {
@@ -131,14 +131,12 @@ class App extends React.Component {
                                 operation: pog,
                                 calc: evaluated,
                                 currentNumber: '0',
-                                sequence: sequence + currentNumber + innerText
                             });
                         } else {
                             this.setState({
                                 operation: innerText,
                                 calc: evaluated,
                                 currentNumber: '0',
-                                sequence: sequence + currentNumber + innerText
                             });
                         }   
                     } 
@@ -149,16 +147,16 @@ class App extends React.Component {
 
     render() {
 
-        const {sequence, currentNumber, calc} = this.state;
+        const {operation, currentNumber, calc} = this.state;
         return(
         <div id="calc-container" className="d-flex align-items-center justify-content-center">
         <div className="layout">
-        {/*<p style={{position:'absolute', top:0}}>{JSON.stringify(this.state,null,2)}</p>*/}
+        <p style={{position:'absolute', top:0}}>{JSON.stringify(this.state,null,2)}</p>
             <div id="screen">
                 <div id="logo" className="d-flex align-item-left">
                     <i className="fas fa-calculator"></i>Epic Calculator
                 </div>
-                <div id="display"><small>{sequence}</small>{currentNumber}</div>    
+                <div id="display"><small>{calc} {operation}</small>{currentNumber}</div>    
             </div>
 
             <div className="col-12 button-wrapper">
