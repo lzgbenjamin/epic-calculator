@@ -11,10 +11,20 @@ class App extends React.Component {
         const {innerText} = event.target;
 
         if(!Number.isNaN(Number(innerText))) {
+
             if(currentNumber === '0') {
                 this.setState({
                     currentNumber:innerText
                 });
+            } 
+
+            else if(currentNumber === calc) {
+                this.setState({
+                    currentNumber:innerText,
+                    calc:undefined,
+                    sequence: undefined
+                });
+
             } else {
                 this.setState({
                     currentNumber: currentNumber + innerText
@@ -72,6 +82,15 @@ class App extends React.Component {
                             sequence: currentNumber + innerText,
                             currentNumber: '0'
                         });
+                    } 
+                    else if(innerText === '=') {
+                        
+                        this.setState({
+                            currentNumber: '0',
+                            calc: undefined,
+                            sequence:undefined
+                        });
+
                     } else {
                         this.setState({
                             operation: innerText,
@@ -134,7 +153,7 @@ class App extends React.Component {
         return(
         <div id="calc-container" className="d-flex align-items-center justify-content-center">
         <div className="layout">
-        {/*<p style={{position:'absolute', top:0}}>{JSON.stringify(this.state,null,2)}</p>*/}
+        <p style={{position:'absolute', top:0}}>{JSON.stringify(this.state,null,2)}</p>
             <div id="screen">
                 <div id="logo" className="d-flex align-item-left">
                     <i className="fas fa-calculator"></i>Epic Calculator
