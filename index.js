@@ -44,6 +44,14 @@ class App extends React.Component {
                  };
                  break;
             }
+            case '-': {
+                if(innerText === '-') {
+                    this.setState({
+                        currentNumber: '-'
+                    });
+                };
+                break;
+            }
 
             default: {
                 if(!operation) { 
