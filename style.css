@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: "Roboto", sans-serif;
+}
+.layout {
+    background-color: rgba(63, 63, 63, 0.322);
+    border-radius: 6px;
+    height: 474px;
+    width: 293px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+button {
+    border: 1px solid rgba(90, 90, 90, 0.37);
+    border-radius: 10px;
+    font-size: 30px;
+    height: 70px;
+    width: 70px;
+    margin: 1px;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+
+h1 {
+    padding: 0px;
+}
+
+.button-wrapper {
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+#calc-container {
+    height: 100vh;
+}
+
+#screen {
+    background-color: rgb(255, 255, 255);
+    color:black;
+    border-radius: 10px;
+    width: 98%;
+    text-align: right;
+    padding: 20px 10px;
+    font-size: 35px;
+    padding-top:5px;
+    position: relative;
+}
+
+#display small {
+    position: absolute;
+    top: 15px;
+    right: 5px;
+    font-size:15px;
+}
+#logo {
+    font-size: 12px;
+}
+
+#clear {
+    width: 214px;
+    background-color: #e73c7e;
+    color: white;
+}
+#zero {
+    width: 142px;
+}
+
+#equals {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    color: white;
+}
+
+#decimal {
+    background-color: rgba(128, 128, 128, 0.377);
+    color: white;
+}
+button.integers {
+    background-color: #23a6d5;
+    color: white;
+}
+
+button.operations {
+    background-color: #ee7752;
+    color: white;
+}
+button:hover {
+    opacity: 0.7;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus {
+    outline: none;
+}
+
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    20% {
+        background-position: 100% 50%;
+    }
+    40% {
+        background-position: 0% 50%;
+    }
+    60% {
+        background-position: 100% 50%;
+    }
+    80% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
