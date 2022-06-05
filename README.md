@@ -1,3 +1,9 @@
 # calculator
 
-code is probably mad janky yandere dev type beat frfr but it works as intended
+Built on the React framework as part of the FreeCodeCamp curriculum.
+
+Uses:
+React
+Javascript
+HTML
+CSS
